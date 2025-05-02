@@ -1,0 +1,210 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Portafolio API Docs",
+    "description": "Documentación del sistema de portafolios.",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000/api"
+    },
+    {
+      "url": "https://henryvf.com/api"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Auth",
+      "description": "Everything about your Auth"
+    }
+  ],
+  "paths": {
+    "/auth/signup": {
+      "post": {
+        "tags": ["Auth"],
+        "summary": "Create new user",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SignDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserSchema"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/auth/login": {
+      "post": {
+        "tags": ["Auth"],
+        "summary": "Logs user into the system",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/auth/profile": {
+      "get": {
+        "tags": ["Auth"],
+        "summary": "Get my user",
+        "responses": {
+          "201": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        },
+        "security": [
+          {
+            "Token": ["write:Auth", "read:Auth"]
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "SignDto": {
+        "required": ["email", "password", "nombre", "rol"],
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "example": "example@example.com"
+          },
+          "password": {
+            "type": "string"
+          },
+          "nombre": {
+            "type": "string",
+            "example": "theUser"
+          },
+          "rol": {
+            "type": "string",
+            "example": "ADMIN || USER"
+          }
+        }
+      },
+      "LoginDto": {
+        "required": ["email", "password"],
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "example": "example@example.com"
+          },
+          "password": {
+            "type": "string"
+          }
+        }
+      },
+      "UserSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "632b3ec8a2af3af9de213654"
+          },
+          "email": {
+            "type": "string",
+            "example": "john@email.com"
+          },
+          "nombre": {
+            "type": "string",
+            "example": "theUser"
+          },
+          "rol": {
+            "type": "string",
+            "example": "ADMIN || USER"
+          }
+        }
+      },
+      "ApiResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string"
+          },
+          "data": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "requestBodies": {
+      "UserArray": {
+        "description": "List of user object",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/UserSchema"
+              }
+            }
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "Token": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  }
+}
