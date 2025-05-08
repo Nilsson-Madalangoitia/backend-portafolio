@@ -20,3 +20,17 @@ export * from "./anio/delete-anio";
 export * from "./anio/get-all-anio";
 export * from "./anio/get-anio";
 export * from "./anio/update-anio";
+
+//portafolio
+export * from "./portafolio/create-portafolio";
+export * from "./portafolio/delete-portafolio";
+export * from "./portafolio/get-all-portafolio";
+export * from "./portafolio/get-portafolio";
+export * from "./portafolio/update-portafolio";
+
+//archivo
+export * from "./archivo/create-archivo";
+export * from "./archivo/delete-archivo";
+export * from "./archivo/get-all-archivo";
+export * from "./archivo/get-archivo";
+export * from "./archivo/update-archivo";
