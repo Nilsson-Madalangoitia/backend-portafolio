@@ -7,3 +7,5 @@ export * from "./signup";
 export * from "./validate-user";
 export * from "./validate-rol";
 export * from "./validate-anio";
+export * from "./validate-portafolio";
+export * from "./validate-archivo";

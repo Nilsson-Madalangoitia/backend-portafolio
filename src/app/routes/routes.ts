@@ -4,6 +4,8 @@ import {
   UserController,
   RolController,
   AnioController,
+  PortafolioController,
+  ArchivoController
 } from "@app/controllers";
 import { attachControllers } from "@decorators/express";
 import express from "express";
@@ -20,6 +22,8 @@ class Routes {
       UserController,
       RolController,
       AnioController,
+      PortafolioController,
+      ArchivoController
     ]);
     return this.apiRouter;
   }

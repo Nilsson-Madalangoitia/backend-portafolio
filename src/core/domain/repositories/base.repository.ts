@@ -18,11 +18,7 @@ export class BaseRepository implements BaseOperations {
   }
 
   async getAll() {
-    return await this.model.find();
-  }
-
-  async getAllClient(){
-    return await this.model.find({ estado:true });
+    return await this.model.find({ status: true });
   }
 
   async create(entity) {

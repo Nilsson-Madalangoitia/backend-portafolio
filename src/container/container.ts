@@ -10,6 +10,8 @@ import {
   ValidateUserMiddleware,
   ValidateRolMiddleware,
   ValidateAnioMiddleware,
+  ValidatePortafolioMiddleware,
+  ValidateArchivoMiddleware
 
 } from "@infrastructure/middlewares";
 
@@ -19,7 +21,9 @@ import {
 
   UserRepository,
   RolRepository,
-  AnioRepository
+  AnioRepository,
+  PortafolioRepository,
+  ArchivoRepository
 
  } from "@core/domain/repositories";
 
@@ -45,6 +49,18 @@ import {
   GetAnioUseCase,
   UpdateAnioUseCase,
 
+  CreatePortafolioUseCase,
+  DeletePortafolioUseCase,
+  GetAllPortafolioUseCase,
+  GetPortafolioUseCase,
+  UpdatePortafolioUseCase,
+
+  CreateArchivoUseCase,
+  DeleteArchivoUseCase,
+  GetAllArchivoUseCase,
+  GetArchivoUseCase,
+  UpdateArchivoUseCase,
+
 } from "@core/use-case";
 
 // Middlewares
@@ -56,6 +72,8 @@ export const JWT_MIDDLEWARE = new InjectionToken("JWT_MIDDLEWARE");
 export const VALIDATE_USER_MIDDLEWARE = new InjectionToken("VALIDATE_USER_MIDDLEWARE");
 export const VALIDATE_ROL_MIDDLEWARE = new InjectionToken("VALIDATE_ROL_MIDDLEWARE");
 export const VALIDATE_ANIO_MIDDLEWARE = new InjectionToken("VALIDATE_ANIO_MIDDLEWARE");
+export const VALIDATE_PORTAFOLIO_MIDDLEWARE = new InjectionToken("VALIDATE_PORTAFOLIO_MIDDLEWARE");
+export const VALIDATE_ARCHIVO_MIDDLEWARE = new InjectionToken("VALIDATE_ARCHIVO_MIDDLEWARE");
 
 // USE CASE
 export const HELLO_USE_CASE = new InjectionToken("HELLO_USE_CASE");
@@ -81,10 +99,26 @@ export const GET_ALL_ANIO_USE_CASE = new InjectionToken("GET_ALL_ANIO_USE_CASE")
 export const GET_ANIO_USE_CASE = new InjectionToken("GET_ANIO_USE_CASE");
 export const UPDATE_ANIO_USE_CASE = new InjectionToken("UPDATE_ANIO_USE_CASE");
 
+//PORTAFOLIO
+export const CREATE_PORTAFOLIO_USE_CASE = new InjectionToken("CREATE_PORTAFOLIO_USE_CASE");
+export const DELETE_PORTAFOLIO_USE_CASE = new InjectionToken("DELETE_PORTAFOLIO_USE_CASE");
+export const GET_ALL_PORTAFOLIO_USE_CASE = new InjectionToken("GET_ALL_PORTAFOLIO_USE_CASE");
+export const GET_PORTAFOLIO_USE_CASE = new InjectionToken("GET_PORTAFOLIO_USE_CASE");
+export const UPDATE_PORTAFOLIO_USE_CASE = new InjectionToken("UPDATE_PORTAFOLIO_USE_CASE");
+
+//ARCHIVO
+export const CREATE_ARCHIVO_USE_CASE = new InjectionToken("CREATE_ARCHIVO_USE_CASE");
+export const DELETE_ARCHIVO_USE_CASE = new InjectionToken("DELETE_ARCHIVO_USE_CASE");
+export const GET_ALL_ARCHIVO_USE_CASE = new InjectionToken("GET_ALL_ARCHIVO_USE_CASE");
+export const GET_ARCHIVO_USE_CASE = new InjectionToken("GET_ARCHIVO_USE_CASE");
+export const UPDATE_ARCHIVO_USE_CASE = new InjectionToken("UPDATE_ARCHIVO_USE_CASE");
+
 // Repository
 export const USER_REPOSITORY = new InjectionToken("USER_REPOSITORY");
 export const ROL_REPOSITORY = new InjectionToken("ROL_REPOSITORY");
 export const ANIO_REPOSITORY = new InjectionToken("ANIO_REPOSITORY");
+export const PORTAFOLIO_REPOSITORY = new InjectionToken("PORTAFOLIO_REPOSITORY");
+export const ARCHIVO_REPOSITORY = new InjectionToken("ARCHIVO_REPOSITORY");
 
 // Container of dependency
 Container.provide([
@@ -97,6 +131,8 @@ Container.provide([
   { provide: VALIDATE_USER_MIDDLEWARE, useClass: ValidateUserMiddleware },
   { provide: VALIDATE_ROL_MIDDLEWARE, useClass: ValidateRolMiddleware },
   { provide: VALIDATE_ANIO_MIDDLEWARE, useClass: ValidateAnioMiddleware },
+  { provide: VALIDATE_PORTAFOLIO_MIDDLEWARE, useClass: ValidatePortafolioMiddleware },
+  { provide: VALIDATE_ARCHIVO_MIDDLEWARE, useClass: ValidateArchivoMiddleware },
 
   { provide: HELLO_USE_CASE, useClass: HelloWorld },
 
@@ -118,8 +154,22 @@ Container.provide([
   { provide: GET_ANIO_USE_CASE, useClass: GetAnioUseCase },
   { provide: UPDATE_ANIO_USE_CASE, useClass: UpdateAnioUseCase },
 
+  { provide: CREATE_PORTAFOLIO_USE_CASE, useClass: CreatePortafolioUseCase },
+  { provide: DELETE_PORTAFOLIO_USE_CASE, useClass: DeletePortafolioUseCase },
+  { provide: GET_ALL_PORTAFOLIO_USE_CASE, useClass: GetAllPortafolioUseCase },
+  { provide: GET_PORTAFOLIO_USE_CASE, useClass: GetPortafolioUseCase },
+  { provide: UPDATE_PORTAFOLIO_USE_CASE, useClass: UpdatePortafolioUseCase },
+
+  { provide: CREATE_ARCHIVO_USE_CASE, useClass: CreateArchivoUseCase },
+  { provide: DELETE_ARCHIVO_USE_CASE, useClass: DeleteArchivoUseCase },
+  { provide: GET_ALL_ARCHIVO_USE_CASE, useClass: GetAllArchivoUseCase },
+  { provide: GET_ARCHIVO_USE_CASE, useClass: GetArchivoUseCase },
+  { provide: UPDATE_ARCHIVO_USE_CASE, useClass: UpdateArchivoUseCase },
+
   { provide: USER_REPOSITORY, useClass: UserRepository },
   { provide: ROL_REPOSITORY, useClass: RolRepository },
   { provide: ANIO_REPOSITORY, useClass: AnioRepository },
+  { provide: PORTAFOLIO_REPOSITORY, useClass: PortafolioRepository },
+  { provide: ARCHIVO_REPOSITORY, useClass: ArchivoRepository },
   
 ]);
