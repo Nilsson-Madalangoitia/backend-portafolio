@@ -1,0 +1,155 @@
+{
+	"info": {
+		"_postman_id": "4c5525ec-6f7e-42ca-9f1f-26d5179d0fbd",
+		"name": "API PORTAFOLIO",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18052440"
+	},
+	"item": [
+		{
+			"name": "Perfil",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjgwZWMwMzBiYjM2ZjVlNjE0NmJmODUxIiwibm9tYnJlIjoiYWRtaW4iLCJhcGVsbGlkbyI6ImFkbWluIiwiZW1haWwiOiJhZG1pbkBnbWFpbC5jb20iLCJyb2wiOnsibm9tYnJlIjoiQURNSU4iLCJzdGF0dXMiOnRydWUsImlkIjoiNjgwZWI5M2E3MmU5MjhhZmMzZDBlNjU5In19LCJpYXQiOjE3NDU3OTcxOTAsImV4cCI6MTc0NTgwNzk5MH0.BWOJRVWQnztekm9oIqiYovq9DDF5xcK2ywIBE9xnIro",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjY1NDA4ZTNhZjJlYWU3YTRmYzY3MWNlNCIsIm5hbWUiOiJ1c2VyMTAiLCJlbWFpbCI6InVzZXIxMEBnbWFpbC5jb20iLCJyb2xlIjoiQURNSU5fUk9MRSIsInN0YXR1cyI6dHJ1ZSwiZ29vZ2xlIjpmYWxzZSwiX192IjowfSwiaWF0IjoxNjk5MTYzMDg2LCJleHAiOjE2OTkxNjM4NDJ9.Xju5kFS9ZmA-vw-7B6nV2RexSkmSf3QLEBWKAHvgQ3g",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/auth/profile",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"auth",
+						"profile"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"admin@gmail.com\",\r\n    \"password\": \"admin\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Registrar rol",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\": \"DOCENTE\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/rol",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"rol"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Registro",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\": \"admin\",\r\n    \"apellido\": \"admin\",\r\n    \"email\": \"admin@gmail.com\",\r\n    \"password\": \"admin\",\r\n    \"rol\": \"680eb93a72e928afc3d0e659\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/auth/signup",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"auth",
+						"signup"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
